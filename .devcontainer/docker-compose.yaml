@@ -1,0 +1,16 @@
+services:
+  golang-dev:
+    image: golang:1.25.1-bookworm
+    container_name: leetcode-go-dev
+    volumes:
+      - ..:/workspace:cached
+      - go-mod-cache:/go/pkg/mod
+    working_dir: /workspace
+    command: sleep infinity
+    # environment:
+    ports:
+      - "8080:8080"
+      - "2345:2345" # For delve debugger
+
+volumes:
+  go-mod-cache:

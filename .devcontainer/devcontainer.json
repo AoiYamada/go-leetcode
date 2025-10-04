@@ -1,0 +1,29 @@
+{
+  "name": "LeetCode Go Development",
+  "dockerComposeFile": "docker-compose.yaml",
+  "service": "golang-dev",
+  "workspaceFolder": "/workspace",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "golang.go",
+        "ms-vscode.vscode-json",
+        "redhat.vscode-yaml",
+        "ms-vscode.test-adapter-converter"
+      ],
+      "settings": {
+        "go.toolsManagement.checkForUpdates": "local",
+        "go.useLanguageServer": true,
+        "go.gopath": "/go",
+        "go.goroot": "/usr/local/go",
+        "go.testFlags": ["-v"],
+        "go.buildFlags": ["-v"],
+        "terminal.integrated.shell.linux": "/bin/bash"
+      }
+    }
+  },
+  "postCreateCommand": "go mod download && go install -v golang.org/x/tools/gopls@latest"
+}

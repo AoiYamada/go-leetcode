@@ -1,0 +1,10 @@
+{
+  "go.testEnvVars": {},
+  "go.testFlags": ["-v"],
+  "go.testTimeout": "30s",
+  "go.coverOnSave": false,
+  "go.coverOnSingleTest": true,
+  "go.coverOnSingleTestFile": true,
+  "go.coverOnTestPackage": true,
+  "cSpell.words": ["leetcode"]
+}
