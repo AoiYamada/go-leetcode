@@ -50,14 +50,14 @@ func solve() {
 import "testing"
 
 func Test{{.ProblemNameTitle}}(t *testing.T) {
-    tests := []struct {
+    testCases := []struct {
         name string
     }{
         {"test case 1"},
     }
     
-    for _, tt := range tests {
-        t.Run(tt.name, func(t *testing.T) {
+    for _, tc := range testCases {
+        t.Run(tc.name, func(t *testing.T) {
             // Test implementation for {{.ProblemName}} ({{.Difficulty}})
         })
     }
