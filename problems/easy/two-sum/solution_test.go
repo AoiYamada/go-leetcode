@@ -77,6 +77,7 @@ func TestTwoSumHashMap(t *testing.T) {
 }
 
 // Benchmark tests
+// for small input size, overhead of hash map lead to slower execution than hashmap approach
 func BenchmarkTwoSumBruteForce(b *testing.B) {
 	nums := []int{2, 7, 11, 15}
 	target := 9
@@ -90,6 +91,32 @@ func BenchmarkTwoSumHashMap(b *testing.B) {
 	nums := []int{2, 7, 11, 15}
 	target := 9
 
+	for i := 0; i < b.N; i++ {
+		twoSumHashMap(nums, target)
+	}
+}
+
+func BenchmarkTwoSumBruteForce_Large(b *testing.B) {
+	nums := make([]int, 1000)
+	for i := range nums {
+		nums[i] = i
+	}
+	target := 1997 // Last two elements
+
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		twoSumBruteForce(nums, target)
+	}
+}
+
+func BenchmarkTwoSumHashMap_Large(b *testing.B) {
+	nums := make([]int, 1000)
+	for i := range nums {
+		nums[i] = i
+	}
+	target := 1997
+
+	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		twoSumHashMap(nums, target)
 	}

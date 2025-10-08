@@ -1,4 +1,4 @@
-.PHONY: test test-verbose test-problem test-cover build-test-runner clean dev-setup new-problem build-problem-creator
+.PHONY: test test-verbose bench-problem test-cover build-bench-runner clean dev-setup new-problem build-problem-creator
 
 # Run all tests
 test:
@@ -9,13 +9,13 @@ test-verbose:
 	go test -v ./problems/...
 
 # Run tests for a specific problem
-test-problem: build-test-runner
+bench: build-bench-runner
 	@if [ -z "$(PROBLEM)" ]; then \
-		echo "Usage: make test-problem PROBLEM=<problem-name>"; \
-		echo "Example: make test-problem PROBLEM=two-sum"; \
+		echo "Usage: make bench PROBLEM=<problem-name>"; \
+		echo "Example: make bench PROBLEM=two-sum"; \
 		exit 1; \
 	fi
-	./bin/run-test $(PROBLEM)
+	./bin/run-bench $(PROBLEM)
 
 # Run tests with coverage
 test-cover:
@@ -28,8 +28,8 @@ test-cover-html:
 	@echo "Coverage report generated: coverage.html"
 
 # Build the test runner
-build-test-runner:
-	go build -o bin/run-test cmd/run-test/main.go
+build-bench-runner:
+	go build -o bin/run-bench cmd/run-bench/main.go
 
 # Build problem creator
 build-problem-creator:
@@ -49,10 +49,6 @@ clean:
 	rm -rf bin/
 	rm -f coverage.out coverage.html
 
-clean-coverage:
-	rm -rf bin/
-	rm -f coverage.out coverage.html
-
 # Setup development environment
 dev-setup:
 	go mod init go-leetcode
@@ -66,7 +62,3 @@ fmt:
 # Run linter
 lint:
 	golangci-lint run
-
-# Run benchmarks
-bench:
-	go test -bench=. ./problems/...

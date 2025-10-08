@@ -66,13 +66,6 @@ func Test{{.ProblemNameTitle}}(t *testing.T) {
 		"README.md": `# {{.ProblemNameTitle}} ({{.DifficultyTitle}})
 
 Problem description goes here.
-
-## Approach
--
-
-## Complexity
-- Time: 
-- Space: 
 `,
 	}
 

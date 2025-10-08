@@ -28,8 +28,8 @@ func main() {
 		os.Exit(1)
 	}
 
-	// Run the test
-	err = runTest(problemPath, testCase)
+	// Run benchmark
+	err = runBench(problemPath, testCase)
 	if err != nil {
 		fmt.Printf("Error running test: %v\n", err)
 		os.Exit(1)
@@ -54,11 +54,13 @@ func findProblemPath(problemName string) (string, error) {
 	return "", fmt.Errorf("problem '%s' not found", problemName)
 }
 
-func runTest(problemPath, testCase string) error {
-	args := []string{"test", "-v", "./" + problemPath}
+func runBench(problemPath, testCase string) error {
+	// Use benchmark flags instead of test flags
+	args := []string{"test", "-bench=.", "-benchmem", "./" + problemPath}
 
 	if testCase != "" {
-		args = append(args, "-run", testCase)
+		args = append(args, "-run", "^$") // Don't run regular tests
+		args = append(args, "-bench", testCase)
 	}
 
 	cmd := exec.Command("go", args...)
