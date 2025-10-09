@@ -41,7 +41,7 @@ func main() {
 
 // {{.DifficultyTitle}}: {{.ProblemNameTitle}}
 // Solution for {{.ProblemName}} ({{.Difficulty}})
-func solve() {
+func {{.ProblemNameTitle}}() {
     // Your solution here
 }
 `,
@@ -59,6 +59,10 @@ func Test{{.ProblemNameTitle}}(t *testing.T) {
     for _, tc := range testCases {
         t.Run(tc.name, func(t *testing.T) {
             // Test implementation for {{.ProblemName}} ({{.Difficulty}})
+						t.Run(tc.name, func(t *testing.T) {
+								result := {{.ProblemNameTitle}}()
+								assert.Equal(t, tc.expected, result)
+						})
         })
     }
 }

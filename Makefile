@@ -36,7 +36,7 @@ build-problem-creator:
 	go build -o bin/create-problem cmd/create-problem/main.go
 
 # Create new problem structure
-new-problem: build-problem-creator
+new: build-problem-creator
 	@if [ -z "$(DIFFICULTY)" ] || [ -z "$(PROBLEM)" ]; then \
 		echo "Usage: make new-problem DIFFICULTY=<easy|medium|hard|extra> PROBLEM=<problem-name>"; \
 		echo "Example: make new-problem DIFFICULTY=easy PROBLEM=two-sum"; \
