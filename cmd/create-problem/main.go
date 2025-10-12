@@ -53,7 +53,7 @@ func Test{{.ProblemNameTitle}}(t *testing.T) {
     testCases := []struct {
         name string
     }{
-        {"test case 1"},
+        {"Example 1"},
     }
     
     for _, tc := range testCases {
