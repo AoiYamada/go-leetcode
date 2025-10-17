@@ -6,5 +6,5 @@
   "go.coverOnSingleTest": true,
   "go.coverOnSingleTestFile": true,
   "go.coverOnTestPackage": true,
-  "cSpell.words": ["leetcode"]
+  "cSpell.words": ["leetcode", "subarray"]
 }
