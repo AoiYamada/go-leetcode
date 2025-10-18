@@ -42,7 +42,7 @@ func main() {
 // {{.DifficultyTitle}}: {{.ProblemNameTitle}}
 // Solution for {{.ProblemName}} ({{.Difficulty}})
 func {{.ProblemNameTitle}}() {
-    // Your solution here
+	// Your solution here
 }
 `,
 		"solution_test.go": `package main
@@ -50,21 +50,22 @@ func {{.ProblemNameTitle}}() {
 import "testing"
 
 func Test{{.ProblemNameTitle}}(t *testing.T) {
-    testCases := []struct {
-        name string
-    }{
-        {"Example 1"},
-    }
-    
-    for _, tc := range testCases {
-        t.Run(tc.name, func(t *testing.T) {
-            // Test implementation for {{.ProblemName}} ({{.Difficulty}})
-						t.Run(tc.name, func(t *testing.T) {
-								result := {{.ProblemNameTitle}}()
-								assert.Equal(t, tc.expected, result)
-						})
-        })
-    }
+	testCases := []struct {
+		name string
+		expected
+	}{
+		{"Example 1",,},
+	}
+	
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			// Test implementation for {{.ProblemName}} ({{.Difficulty}})
+			t.Run(tc.name, func(t *testing.T) {
+				result := {{.ProblemNameTitle}}(tc.)
+				assert.Equal(t, tc.expected, result)
+			})
+		})
+	}
 }
 `,
 		"README.md": `# {{.ProblemNameTitle}} ({{.DifficultyTitle}})
