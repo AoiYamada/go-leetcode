@@ -6,44 +6,29 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestRemovingStarsFromAString(t *testing.T) {
-	testCases := []struct {
-		name     string
-		s        string
-		expected string
-	}{
-		{"Example 1", "leet**cod*e", "lecoe"},
-		{"Example 2", "erase*****", ""},
-	}
+var removingStarsFromAStringTestCases = []struct {
+	name     string
+	s        string
+	expected string
+}{
+	{"Example 1", "leet**cod*e", "lecoe"},
+	{"Example 2", "erase*****", ""},
+}
 
-	for _, tc := range testCases {
+func TestRemovingStarsFromAString(t *testing.T) {
+	for _, tc := range removingStarsFromAStringTestCases {
 		t.Run(tc.name, func(t *testing.T) {
-			// Test implementation for removing-stars-from-a-string (medium)
-			t.Run(tc.name, func(t *testing.T) {
-				result := removeStars(tc.s)
-				assert.Equal(t, tc.expected, result)
-			})
+			result := removeStars(tc.s)
+			assert.Equal(t, tc.expected, result)
 		})
 	}
 }
 
 func TestRemovingStarsFromAString2(t *testing.T) {
-	testCases := []struct {
-		name     string
-		s        string
-		expected string
-	}{
-		{"Example 1", "leet**cod*e", "lecoe"},
-		{"Example 2", "erase*****", ""},
-	}
-
-	for _, tc := range testCases {
+	for _, tc := range removingStarsFromAStringTestCases {
 		t.Run(tc.name, func(t *testing.T) {
-			// Test implementation for removing-stars-from-a-string (medium)
-			t.Run(tc.name, func(t *testing.T) {
-				result := removeStars2(tc.s)
-				assert.Equal(t, tc.expected, result)
-			})
+			result := removeStars2(tc.s)
+			assert.Equal(t, tc.expected, result)
 		})
 	}
 }

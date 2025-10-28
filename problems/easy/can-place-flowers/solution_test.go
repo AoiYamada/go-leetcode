@@ -6,21 +6,21 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestCanPlaceFlowers(t *testing.T) {
-	testCases := []struct {
-		name      string
-		flowerbed []int
-		n         int
-		expected  bool
-	}{
-		{"Example 1", []int{1, 0, 0, 0, 1}, 1, true},
-		{"Example 1", []int{1, 0, 0, 0, 1}, 2, false},
-		{"Test Case 13", []int{0, 0, 1, 0, 1}, 1, true},
-		{"Test Case 16", []int{1, 0, 0, 0, 1, 0, 0}, 2, true},
-		{"Test Case 123", []int{1, 0}, 1, false},
-	}
+var canPlaceFlowersTestCases = []struct {
+	name      string
+	flowerbed []int
+	n         int
+	expected  bool
+}{
+	{"Example 1", []int{1, 0, 0, 0, 1}, 1, true},
+	{"Example 2", []int{1, 0, 0, 0, 1}, 2, false},
+	{"Test Case 13", []int{0, 0, 1, 0, 1}, 1, true},
+	{"Test Case 16", []int{1, 0, 0, 0, 1, 0, 0}, 2, true},
+	{"Test Case 123", []int{1, 0}, 1, false},
+}
 
-	for _, tc := range testCases {
+func TestCanPlaceFlowers(t *testing.T) {
+	for _, tc := range canPlaceFlowersTestCases {
 		t.Run(tc.name, func(t *testing.T) {
 			result := canPlaceFlowers(tc.flowerbed, tc.n)
 			assert.Equal(t, tc.expected, result)
@@ -29,20 +29,7 @@ func TestCanPlaceFlowers(t *testing.T) {
 }
 
 func TestCanPlaceFlowers2(t *testing.T) {
-	testCases := []struct {
-		name      string
-		flowerbed []int
-		n         int
-		expected  bool
-	}{
-		{"Example 1", []int{1, 0, 0, 0, 1}, 1, true},
-		{"Example 1", []int{1, 0, 0, 0, 1}, 2, false},
-		{"Test Case 13", []int{0, 0, 1, 0, 1}, 1, true},
-		{"Test Case 16", []int{1, 0, 0, 0, 1, 0, 0}, 2, true},
-		{"Test Case 123", []int{1, 0}, 1, false},
-	}
-
-	for _, tc := range testCases {
+	for _, tc := range canPlaceFlowersTestCases {
 		t.Run(tc.name, func(t *testing.T) {
 			result := canPlaceFlowers2(tc.flowerbed, tc.n)
 			assert.Equal(t, tc.expected, result)

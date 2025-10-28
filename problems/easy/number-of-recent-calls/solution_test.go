@@ -8,7 +8,15 @@ import (
 
 type constructor func() RecentCounter
 
-func produceResult(fn constructor, times []int) []int {
+var numberOfRecentCallsTestCases = []struct {
+	name     string
+	times    []int
+	expected []int
+}{
+	{"Example 1", []int{1, 100, 3001, 3002}, []int{1, 2, 3, 3}},
+}
+
+func produceResultWithPing(fn constructor, times []int) []int {
 	obj := fn()
 	result := make([]int, len(times))
 
@@ -19,7 +27,7 @@ func produceResult(fn constructor, times []int) []int {
 	return result
 }
 
-func produceResult2(fn constructor, times []int) []int {
+func produceResultWithPing2(fn constructor, times []int) []int {
 	obj := fn()
 	result := make([]int, len(times))
 
@@ -31,41 +39,19 @@ func produceResult2(fn constructor, times []int) []int {
 }
 
 func TestNumberOfRecentCalls(t *testing.T) {
-	testCases := []struct {
-		name     string
-		times    []int
-		expected []int
-	}{
-		{"Example 1", []int{1, 100, 3001, 3002}, []int{1, 2, 3, 3}},
-	}
-
-	for _, tc := range testCases {
+	for _, tc := range numberOfRecentCallsTestCases {
 		t.Run(tc.name, func(t *testing.T) {
-			// Test implementation for number-of-recent-calls (easy)
-			t.Run(tc.name, func(t *testing.T) {
-				result := produceResult(Constructor, tc.times)
-				assert.Equal(t, tc.expected, result)
-			})
+			result := produceResultWithPing(Constructor, tc.times)
+			assert.Equal(t, tc.expected, result)
 		})
 	}
 }
 
 func TestNumberOfRecentCalls2(t *testing.T) {
-	testCases := []struct {
-		name     string
-		times    []int
-		expected []int
-	}{
-		{"Example 1", []int{1, 100, 3001, 3002}, []int{1, 2, 3, 3}},
-	}
-
-	for _, tc := range testCases {
+	for _, tc := range numberOfRecentCallsTestCases {
 		t.Run(tc.name, func(t *testing.T) {
-			// Test implementation for number-of-recent-calls (easy)
-			t.Run(tc.name, func(t *testing.T) {
-				result := produceResult2(Constructor, tc.times)
-				assert.Equal(t, tc.expected, result)
-			})
+			result := produceResultWithPing2(Constructor, tc.times)
+			assert.Equal(t, tc.expected, result)
 		})
 	}
 }
