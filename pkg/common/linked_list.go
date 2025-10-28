@@ -29,7 +29,7 @@ func CreateLinkedList(vals []int) *ListNode {
 }
 
 func LinkedListToSlice(head *ListNode) []int {
-	var result []int
+	result := []int{}
 	current := head
 
 	for current != nil {
