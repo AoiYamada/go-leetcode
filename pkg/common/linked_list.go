@@ -5,12 +5,6 @@ type ListNode struct {
 	Next *ListNode
 }
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
-
 // Helper functions for creating test data
 func CreateLinkedList(vals []int) *ListNode {
 	if len(vals) == 0 {
