@@ -9,7 +9,7 @@ services:
     command: sleep infinity
     # environment:
     ports:
-      - "8080:8080"
+      # - "8080:8080" # For go server dev, I'm not making a go server
       - "2345:2345" # For delve debugger
 
 volumes:
